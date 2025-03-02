@@ -1,65 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Preview</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f8f8f8;
-        }
-        .product-container {
-            width: 350px;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #91acdf;
             text-align: center;
+            margin: 0;
+            padding: 0;
         }
-        .main-product img {
-            width: 100%;
-            border-radius: 10px;
+
+        .main-photo {
+            height: 500px;
+            width: 650px;
+            border-radius: 20px;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
         }
-        .sub-products {
+
+        .main-photo:hover {
+            transform: scale(1.02);
+        }
+
+        .container {
             display: flex;
             justify-content: center;
-            margin-top: 10px;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 10px;
         }
-        .sub-products img {
-            width: 60px;
-            height: 60px;
-            margin: 5px;
+
+        .sub-photo {
+            height: 80px;
+            width: 80px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
             cursor: pointer;
-            border-radius: 5px;
-            border: 2px solid transparent;
-            transition: 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .sub-products img:hover {
-            border: 2px solid #007bff;
+
+        .sub-photo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @media screen and (max-width: 600px) {
+            .main-photo {
+                height: 250px;
+                width: 200px;
+            }
+
+            .sub-photo {
+                height: 50px;
+                width: 50px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="product-container">
-        <div class="main-product">
-            <img id="mainImage" src="../product.jpg" alt="Main Product"height="200px"width="50"onclick="changeImage('../preview/img/shopping.webp')">
-        </div>
-        <div class="sub-products">
-            <img src="../product.jpg" alt="Sub Product 1" onclick="changeImage('../preview/img/product.jpg')">
-            <img src="../product2.jpeg" alt="Sub Product 2" onclick="changeImage('../preview/img/shopping.webp')">
-            <img src="../product3.jpg" alt="Sub Product 3" onclick="changeImage('../preview/img/product3.jpg')">
-        </div>
-    </div>
 
+    <img src="./img/mainimg.webp" class="main-photo" id="Mimage" alt="Product Image">
+    <div class="container">
+        <img src="./img/mainimg.webp" class="sub-photo" onclick="imageChange('./img/mainimg.webp')" alt="Thumbnail 1">
+        <img src="./img/1.webp" class="sub-photo" onclick="imageChange('./img/1.webp')" alt="Thumbnail 1">
+        <img src="./img/2.webp" class="sub-photo" onclick="imageChange('./img/2.webp')" alt="Thumbnail 2">
+        <img src="./img/3.webp" class="sub-photo" onclick="imageChange('./img/3.webp')" alt="Thumbnail 3">
+        <img src="./img/4.webp" class="sub-photo" onclick="imageChange('./img/4.webp')" alt="Thumbnail 4">
+        <img src="./img/5.webp" class="sub-photo" onclick="imageChange('./img/5.webp')" alt="Thumbnail 5">
+    </div>
+    
     <script>
-        function changeImage(imageSrc) {
-            document.getElementById('mainImage').src = preview/img/shopping.webp;
+        function imageChange(imgName) {
+            const mainImage = document.getElementById("Mimage");
+            mainImage.src = imgName;
         }
     </script>
+    
 </body>
 </html>
